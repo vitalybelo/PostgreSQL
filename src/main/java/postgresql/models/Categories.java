@@ -23,11 +23,16 @@ public class Categories {
     @Column(nullable = false, length = 100)
     private String category_name;
 
-    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Products> products = new HashSet<>();
 
     public Categories(String category_name) {
         this.category_name = category_name;
     }
 
+    public void addProduct(Products product) {
+        if (product != null) {
+            products.add(product);
+        }
+    }
 }

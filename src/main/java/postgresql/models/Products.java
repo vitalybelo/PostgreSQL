@@ -1,6 +1,5 @@
 package postgresql.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,10 +17,6 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Categories category;
-
     @Column(nullable = false, length = 100)
     private String product_name;
 
@@ -29,7 +24,12 @@ public class Products {
     private Double product_price;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categories_category_id")
-    private Categories categories;
+    @JoinColumn(name = "category_id")
+    private Categories category;
 
+    public Products(String name, Double price, Categories category) {
+        this.product_name = name;
+        this.product_price = price;
+        this.category = category;
+    }
 }
