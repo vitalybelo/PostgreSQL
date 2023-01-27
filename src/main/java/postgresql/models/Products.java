@@ -11,17 +11,17 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "categories")
-public class Categories {
+@Table(name = "products")
+public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer category_id;
+    private Integer product_id;
 
-    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
-    private String category_name;
+    @Column(nullable = false)
+    private String product_name;
 
-    public Categories(String category_name) {
-        this.category_name = category_name;
-    }
+    @Column(nullable = false)
+    private Double product_price;
+
 }
