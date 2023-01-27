@@ -14,7 +14,11 @@ import java.util.Date;
 public class DefaultController implements CommandLineRunner {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
+
+    public DefaultController(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     @RequestMapping("/")
     public String index() {
