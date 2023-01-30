@@ -45,6 +45,14 @@ public class DefaultController implements CommandLineRunner {
             System.out.println("A new row has been inserted.");
 */
 
+        for (int x = 1; x <=5; ++x) {
+            String category_name = "Category #" + x;
+            Iterable<Categories> categories = categoryRepository.findAll();
+            for (Categories c : categories) {
+                if (c.getCategory_name().equals(category_name))
+                    categoryRepository.delete(c);
+            }
+        }
 
         for (int x = 1; x <= 5; ++x) {
             Categories category = new Categories("Category #" + x);
