@@ -24,7 +24,7 @@ public class Products {
     private Double product_price;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Categories category;
 
     public Products(String name, Double price, Categories category) {
